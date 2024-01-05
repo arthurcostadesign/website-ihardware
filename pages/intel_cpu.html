@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iHARDware!</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">iHARDware!</a></h1>
+    </header>
+
+    <section class="processor-links">
+        <h2 class="title-logo intel">CPUs Intel</h2>
+        <ul id="processor-list"></ul>
+    </section>
+
+    <script>
+        // Define o título da página com base no texto do elemento h2
+        var h2Element = document.querySelector('h2');
+        if (h2Element) {
+            var novoTitulo = "iHARDware! - " + (h2Element.textContent || h2Element.innerText);
+            document.title = novoTitulo;
+        }
+
+        // Função para obter a lista de processadores dinamicamente
+        async function fetchProcessorList() {
+            try {
+                const response = await fetch('../pages/intel_cpu');
+                const data = await response.text();
+
+                // Criação de um elemento temporário para analisar o HTML retornado
+                const tempElement = document.createElement('div');
+                tempElement.innerHTML = data;
+
+                // Filtra os links que referem-se a processadores
+                const processorLinks = Array.from(tempElement.querySelectorAll('a'))
+                    .map(link => link.href.split('/').pop().replace('.html', ''))
+                    .filter(processor => processor !== '' && processor !== 'pages' && processor !== 'intel_cpu');
+
+                console.log('Lista de processadores:', processorLinks);
+                return processorLinks;
+            } catch (error) {
+                console.error('Erro ao obter a lista de processadores:', error);
+                return [];
+            }
+        }
+
+        // Função para criar dinamicamente os links na lista
+        async function createProcessorLinks() {
+            try {
+                const processorList = document.getElementById("processor-list");
+                const processors = await fetchProcessorList();
+
+                processors.forEach(processor => {
+                    const processorLink = document.createElement("li");
+                    const processorAnchor = document.createElement("a");
+                    processorAnchor.href = `../pages/intel_cpu/${processor}.html`;
+                    processorAnchor.textContent = processor;
+                    processorLink.appendChild(processorAnchor);
+                    processorList.appendChild(processorLink);
+                });
+            } catch (error) {
+                console.error('Erro ao criar links dos processadores:', error);
+            }
+        }
+
+        // Chamada da função para criar os links ao carregar a página
+        window.onload = createProcessorLinks;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iHARDware!</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">iHARDware!</a></h1>
+    </header>
+
+    <section class="main-buttons">
+        <button class="intel" onclick="navigateToBrand('Intel_CPU')">CPUs Intel</button>
+        <button class="intel" onclick="navigateToBrand('Intel_GPU')">GPUs Intel</button>
+        <button class="amd" onclick="navigateToBrand('AMD_CPU')">CPUs AMD</button>
+        <button class="amd" onclick="navigateToBrand('AMD_GPU')">GPUs AMD</button>
+        <button class="nvidia" onclick="navigateToBrand('NVIDIA_GPU')">GPUs NVIDIA</button>
+    </section>
+
+    <script>
+        // Define o título da página com base no texto do elemento h2
+        var h2Element = document.querySelector('h2');
+        if (h2Element) {
+            var novoTitulo = "iHARDware! - " + (h2Element.textContent || h2Element.innerText);
+            document.title = novoTitulo;
+        }
+
+        // Função para navegar para a página da marca selecionada
+        function navigateToBrand(brand) {
+            window.location.href = `pages/${brand.toLowerCase()}.html`;
+        }
+    </script>
+</body>
+
+</html>

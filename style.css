@@ -1,0 +1,146 @@
+/* Cores principais */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0062cc;
+    --text-color: #333;
+}
+
+* {
+    user-select: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    color: var(--text-color);
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+/* Botões e seções */
+.main-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Lista de processadores */
+.processor-links {
+    margin-top: 20px;
+}
+
+.processor-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.processor-links li {
+    margin-bottom: 10px;
+}
+
+.processor-links a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.processor-links a:hover {
+    color: var(--secondary-color);
+}
+
+button {
+    display: inline-block;
+    padding: 15px 20px;
+    padding-left: 54px;
+    margin: 0 10px 10px 0;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 48px;
+    background-color: white;
+}
+
+button.intel::before {
+    background-image: url('images/intel_logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-mask: url('images/intel_logo.svg') no-repeat center center / contain;
+    mask: url('images/intel_logo.svg') no-repeat center center / contain;
+}
+
+button.amd::before {
+    background-image: url('images/amd_logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-mask: url('images/amd_logo.svg') no-repeat center center / contain;
+    mask: url('images/amd_logo.svg') no-repeat center center / contain;
+}
+
+button.nvidia::before {
+    background-image: url('images/nvidia_logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-mask: url('images/nvidia_logo.svg') no-repeat center center / contain;
+    mask: url('images/nvidia_logo.svg') no-repeat center center / contain;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Logo nos cabeçalhos */
+.title-logo::before {
+    content: '';
+    display: inline-block;
+    width: 62px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.title-logo.intel::before {
+    background-image: url('images/intel_logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.title-logo.amd::before {
+    background-image: url('images/amd_logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.title-logo.nvidia::before {
+    background-image: url('images/nvidia_logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+h2 {
+    color: var(--secondary-color);
+}
