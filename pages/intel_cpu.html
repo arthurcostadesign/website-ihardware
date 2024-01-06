@@ -29,7 +29,7 @@
         // Função para obter a lista de processadores dinamicamente
         async function fetchProcessorList() {
             try {
-                const response = await fetch('https://ihardware.netlify.app/pages/intel_cpus/');
+                const response = await fetch('../pages/intel_cpus');
                 const data = await response.text();
 
                 // Criação de um elemento temporário para analisar o HTML retornado
@@ -58,7 +58,7 @@
                 processors.forEach(processor => {
                     const processorLink = document.createElement("li");
                     const processorAnchor = document.createElement("a");
-                    processorAnchor.href = `https://ihardware.netlify.app/pages/intel_cpus/${processor}.html`;
+                    processorAnchor.href = `../pages/intel_cpus/${processor}.html`;
                     processorAnchor.textContent = processor;
                     processorLink.appendChild(processorAnchor);
                     processorList.appendChild(processorLink);
